@@ -1,0 +1,16 @@
+-ModelNew14 seems to have the lowest loss at around 15, but seems to produce results similar to bicubic, but falters a decent bit on sharp lines or non-gradients
+-ModelNew15 seems to produce results in less epochs and currently appears to be a replica of bicubic when compared
+-ModelNew16 seems to produce good results with cap=True, but it seems to do something more akin to an altered nearest neighbor upscale, as it works on sharp images, but smoother ones have jagged pixel edges. Close inspection of individual square results reveal it doesn't seem to be recreating gradients like the previous two models, but is lighter on memory
+-ModelNew17 uses a larger kernal size (7, 7), a prelu layer, and a change to the pixelshuffle (that might not have changed much from ModelNew16 other than easier to read the code of) to create a model that seems to recreate the image more
+-ModelNew20 is a GAN that had trouble trying to converge, so the results were mixed
+-ModelNew21 is a WGAN which seems to converge better than the GAN, but perhaps pretty slowly
+-ModelNew22 is a WGAN-GP or a WGAN with gradient penalty (18:50 in WGAN implementation from scratch (with gradient penalty))
+-ModelNew23 is an updated version of 22 that uses SGD as the optimizer for both
+-ModelNew24 is a version of 23 that tries to use ADAM as well as added more layers
+-ModelNew25 is a model that only upscales one layer and creates images by upscaling each layer individual before adding them back together
+-ModelNew25_4 is an upgraded version of ModelNew25 that has a stronger discriminator, and thus was able to produce a better looking image
+-ModelNew26 uses VGG image recognition in loss on top of how 23 already worked to try and improve learning, but only does RGB
+-ModelNew27 tried to test variations of optimizers, but failed as I realized my implementation of VGG was being given corrupted images
+-ModelNew28 fixed the issues related to image corruption in 27, but didn't have any better results than previous best, even though VGG was working
+-ModelNew29 is the attempt to mimic RGB image upscale from githubs I found, but with a few variations to encourage change, as was still lacking new results. New change includes weighting adversarial and content loss, as well as inclusion of a train that doesn't use a discriminator to train the generator.
+-ModelNew31 uses an updated version of a github page as a reference for the structure. This structure change seemed to significantly improve convergance and allowed me to get results of good quality, albeit noisy for the GAN version.
