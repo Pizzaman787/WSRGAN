@@ -1,5 +1,6 @@
 # WSRGAN
 A Wasserstein Super Resolution Generative Adversarial Network I made by following some tutorials and combining some notes I found online.
+Trained using the COCO 2014 dataset
 
 The code for the model is a little scattered, as I made it to run from the terminal on the computer I was using to train it. Some versions of the model took up to a week to train. I would refactor the code, but I considered this to be a project for practice more than practical implementation. My model does have better results in terms of details than many others I found online at the time I made it (early to mid 2023), but it was a tad noisy and thus didn't produce very smooth images. The non-gan version that simply used a loss comparison algorithm produced smooth, but decent results. That made that version good for cartoony images, but poorer for photos or complex 3D renders.
 
